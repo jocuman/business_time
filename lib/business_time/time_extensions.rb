@@ -43,6 +43,10 @@ module BusinessTime
         time.to_i > end_of_workday(time).to_i
       end
 
+      def in_business_hours?(time)
+        !before_business_hours?(time) && !after_business_hours?(time)
+      end
+
       # Rolls forward to the next beginning_of_workday
       # when the time is outside of business hours
       def roll_forward(time)
